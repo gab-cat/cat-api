@@ -18,6 +18,7 @@ const Modal = () => {
 
 
   useEffect(() => {
+    if (!loaded) return;
     return () => fetchImages();
   },[] );
 

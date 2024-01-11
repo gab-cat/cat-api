@@ -13,16 +13,18 @@ export const ModalProvider = ({ children }) => {
     console.log("Open Modal");
     setSelectedModalBreed(catBreed);
     setShowModal(true);
+    setLoaded(true);
   };
 
   const closeModal = () => {
     console.log("Closed Modal");
     setShowModal(false);
-    setImages([]);
     setLoaded(false);
   };
 
   const fetchImages = async () => {
+    if (!showModal) return;
+    
     const breedID = selectedModalBreed.breeds[0]?.id;
     const api = `live_3E4QzNAesUi4gOPUmdL7Gnd1NoeGSSORmQSh3wJtKPbF8yRf1MY8IEzZxeEinuqZ`;
     const url = `https://api.thecatapi.com/v1/images/search?limit=3&breed_ids=${breedID}&api_key=${api}`;
@@ -31,7 +33,7 @@ export const ModalProvider = ({ children }) => {
       const response = await fetch(url);
       const data = await response.json();
       setImages(data);
-      console.log('get 3 images');
+      console.log('get 3 images: ',breedID );
       setLoaded(true);
     } catch (error) {
       console.error('Error fetching cat breeds:', error);
