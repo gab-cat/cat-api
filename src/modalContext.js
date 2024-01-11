@@ -19,6 +19,7 @@ export const ModalProvider = ({ children }) => {
   const closeModal = () => {
     console.log("Closed Modal");
     setShowModal(false);
+    setImages([]);
     setLoaded(false);
   };
 
