@@ -36,7 +36,7 @@ export default function Hero() {
   }, [searchTerm]);
 
   const handleSearch = async () => {
-    if (searchTerm.length > 1) {
+    if (searchTerm?.length > 1) {
       try {
         const response = await fetch(`https://api.thecatapi.com/v1/breeds/search?q=${searchTerm}&has_breeds=1`);
         if (response.ok) {
@@ -63,7 +63,7 @@ export default function Hero() {
         console.error('Error fetching cat breeds:', error);
       }
     }
-    else if (searchTerm.length === 0) {  
+    else if (searchTerm?.length === 0) {  
       setData([]);
       setSelectedBreedId(null);
       setFound(true);

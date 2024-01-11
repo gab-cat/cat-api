@@ -56,14 +56,11 @@ const Card = () => {
   
   useEffect(() => {
     if (selectedBreedId === null && !(page > 1)) {
-      if (!firstLoad) 
       fetchCatBreeds();
     }
   }, [selectedBreedId]);
 
   useEffect(() => {
-    
-    setFirstLoad(false);
     return () => fetchCatBreeds();
   }, []);
 
