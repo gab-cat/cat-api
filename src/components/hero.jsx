@@ -16,7 +16,11 @@ export default function Hero() {
   
   const handleSearchType = (e) => {
     setSearchTerm(e.target.value);
-    data.length === 1 ? setSelectedBreedId(data[0].id) : '';
+    if (data.length === 1) {
+      setSelectedBreedId(data[0].id);
+    } else {
+      setSelectedBreedId('');
+    }
   };
 
   useEffect(() => {
@@ -46,7 +50,11 @@ export default function Hero() {
             setActiveIndex(null);
           }
 
-          data.length === 1 ? setSelectedBreedId(data[0].id) : '';
+          if (data.length === 1) {
+            setSelectedBreedId(data[0].id);
+          } else {
+            setSelectedBreedId('');
+          }
           
         } else {
           throw new Error('Failed to fetch data');

@@ -5,7 +5,7 @@ import Card from './card';
 import { useRenderContext } from '../context';
 
 const Main = () => {
-  const { selectedBreedId, setSelectedBreedId, activeIndex, setActiveIndex } = useRenderContext();
+  const { selectedBreedId, setSelectedBreedId, activeIndex, setActiveIndex, setSearchTerm } = useRenderContext();
   const [randomBreeds, setRandomBreeds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [triggerFetch, setTriggerFetch] = useState(false);
@@ -83,9 +83,12 @@ const Main = () => {
   
   const restartAnimation = () => {
     if (filterContainerRef.current) {
-      filterContainerRef.current.offsetHeight; 
+      const offsetHeight = filterContainerRef.current.offsetHeight;
+      // Use the offsetHeight variable or perform other actions as needed
     }
   };
+  
+
   useEffect(() => {
     restartAnimation(); 
   }, [count]);
