@@ -67,7 +67,7 @@ const Card = () => {
 
   useEffect(() => {
     setFirstLoad(false);
-    return () => fetchCatBreeds();
+    fetchCatBreeds();
   }, []);
 
 
