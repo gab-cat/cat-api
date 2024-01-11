@@ -9,7 +9,7 @@ import { useGlobalContext } from "./modalContext";
 export default function App() {
 
   const { showModal } = useGlobalContext();
-  console.log("Version 1.04");
+  console.log("Version 1.05");
   
   return (
     <main>
