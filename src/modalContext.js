@@ -24,8 +24,6 @@ export const ModalProvider = ({ children }) => {
   };
 
   const fetchImages = async () => {
-    if (!showModal) return;
-    
     const breedID = selectedModalBreed.breeds[0]?.id;
     const api = `live_3E4QzNAesUi4gOPUmdL7Gnd1NoeGSSORmQSh3wJtKPbF8yRf1MY8IEzZxeEinuqZ`;
     const url = `https://api.thecatapi.com/v1/images/search?limit=3&breed_ids=${breedID}&api_key=${api}`;
