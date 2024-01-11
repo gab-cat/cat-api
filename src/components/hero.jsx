@@ -18,9 +18,7 @@ export default function Hero() {
     setSearchTerm(e.target.value);
     if (data.length === 1) {
       setSelectedBreedId(data[0].id);
-    } else {
-      setSelectedBreedId('');
-    }
+    } 
   };
 
   useEffect(() => {
@@ -31,12 +29,12 @@ export default function Hero() {
   }, [data, setSelectedBreedId]);
 
   useEffect(() => {
-    console.log("Search term : " + searchTerm);
     handleSearch();
   }, [searchTerm]);
 
   const handleSearch = async () => {
-    if (searchTerm?.length > 1) {
+    if (searchTerm?.length > 2) {
+      console.log("Search term : " + searchTerm);
       try {
         const response = await fetch(`https://api.thecatapi.com/v1/breeds/search?q=${searchTerm}&has_breeds=1`);
         if (response.ok) {
@@ -52,9 +50,7 @@ export default function Hero() {
 
           if (data.length === 1) {
             setSelectedBreedId(data[0].id);
-          } else {
-            setSelectedBreedId('');
-          }
+          } 
           
         } else {
           throw new Error('Failed to fetch data');
@@ -68,11 +64,6 @@ export default function Hero() {
       setSelectedBreedId(null);
       setFound(true);
     }
-  };
-
-  const onSearch = (searchTerm) => {
-    console.log(searchTerm);
-    handleSearch();
   };
 
   const handleEnterPress = (e) => {

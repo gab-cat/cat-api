@@ -69,7 +69,6 @@ const Main = () => {
         const breedId = selectedBreed.breeds[0].id;
         setSelectedBreedId(breedId);
       }
-    setSearchTerm('');
   };
 
   const handleGenerateClick = () => {

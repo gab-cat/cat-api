@@ -21,8 +21,6 @@ const Card = () => {
 
   const fetchCatBreeds = async () => {
 
-    console.log("fetchCatBreeds from card.jsx");
-
     const apiKey = 'live_3E4QzNAesUi4gOPUmdL7Gnd1NoeGSSORmQSh3wJtKPbF8yRf1MY8IEzZxeEinuqZ';
     let url = showOneBreed
       ? `https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1&page=${page}&api_key=${apiKey}&breed_ids=${selectedBreedId}`
@@ -30,7 +28,7 @@ const Card = () => {
 
     try {
       setIsLoadingNewCats(true);
-      const response = await fetch(url); console.log(url);
+      const response = await fetch(url); 
 
       if (response.ok) {
         const data = await response.json();
@@ -56,21 +54,21 @@ const Card = () => {
   
   useEffect(() => {
     if (selectedBreedId === null && !(page > 1)) {
+      if (!firstLoad) 
       fetchCatBreeds();
     }
-  }, [selectedBreedId]);
 
-  useEffect(() => {
-    return () => fetchCatBreeds();
-  }, []);
-
-  useEffect(() => {
     if (selectedBreedId !== null) {
       fetchCatBreeds();
       setCatBreeds([]);
       setPage(1);
     }
   }, [selectedBreedId]);
+
+  useEffect(() => {
+    setFirstLoad(false);
+    return () => fetchCatBreeds();
+  }, []);
 
 
   const handleLoadMore = async () => {
