@@ -35,7 +35,7 @@ const Card = () => {
         if (selectedBreedId) {
           setCatBreeds(data); 
         } else {
-          setCatBreeds(prevBreeds => [...prevBreeds, ...data]); // For other cases, append data
+          setCatBreeds(prevBreeds => [...data]); // For other cases, append data
         }
         setHasMore(data.length === 6);
         setIsLoadingNewCats(false);

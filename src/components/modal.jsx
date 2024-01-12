@@ -18,7 +18,7 @@ const Modal = () => {
 
 
   useEffect(() => {
-    return () => fetchImages();
+    fetchImages();
   },[] );
 
   const swapImage = (e) => {
