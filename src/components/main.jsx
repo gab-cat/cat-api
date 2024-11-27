@@ -12,19 +12,13 @@ const Main = () => {
   let count = 0;
 
   useEffect(() => {
-    console.log("Selected Breed ID:", selectedBreedId);
-  }, [selectedBreedId]);
-
-  useEffect(() => {
     count += 1;
-    console.log("Fetching random breeds...count: "+ count);
     if (count === 1) fetchRandomBreeds();
   }, []); 
 
   useEffect(() => {
       if (triggerFetch) {
           fetchRandomBreeds();
-          console.log("Fetching random breeds... trigeer fetch");
           setTriggerFetch(false);
       }
   }, [triggerFetch, randomBreeds]);
