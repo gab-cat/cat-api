@@ -7,35 +7,42 @@ on:
       - 'releases/*' # The release branches
 
 jobs:
-  qodana:
+  qodana-analysis:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
       checks: write
+
     steps:
+      # Checkout the code from the pull request or commit
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }} 
-          fetch-depth: 0 
+          ref: ${{ github.event.pull_request.head.sha }}  # to check out the actual pull request commit, not the merge commit
+          fetch-depth: 0  # a full history is required for pull request analysis
 
-      - name: Cache NPM dependencies
-        uses: actions/cache@v2
+      # Cache node_modules to speed up npm install
+      - name: Cache node_modules
+        uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-            
+
+      # Install npm dependencies
       - name: Install dependencies
-        run: npm install
-          
-      - name: 'Qodana Scan'
+        run: |
+          npm install
+
+      # Qodana Static Analysis
+      - name: Qodana Scan
         uses: JetBrains/qodana-action@v2024.2
         with:
           pr-mode: false
           args: --apply-fixes
           push-fixes: pull-request
+          use-caches: true
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
