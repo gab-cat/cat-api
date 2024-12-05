@@ -3,6 +3,7 @@ import { IoMdRefreshCircle } from 'react-icons/io';
 import Loading from './loading';
 import Card from './card';
 import { useRenderContext } from '../context';
+import dotenv from 'dotenv';
 
 const Main = () => {
   const { selectedBreedId, setSelectedBreedId, activeIndex, setActiveIndex, setSearchTerm } = useRenderContext();
@@ -35,7 +36,7 @@ const Main = () => {
 
     const headers = new Headers({
       "Content-Type": "application/json",
-      "x-api-key": "live_3E4QzNAesUi4gOPUmdL7Gnd1NoeGSSORmQSh3wJtKPbF8yRf1MY8IEzZxeEinuqZ",
+      "x-api-key": process.env.REACT_APP_API_KEY,
     });
 
     const requestOptions = {
