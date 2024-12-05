@@ -5,6 +5,7 @@ import { useGlobalContext } from '../modalContext';
 import { useRenderContext } from '../context';
 import noFound from './noFound.png';
 import { FaInfoCircle } from "react-icons/fa";
+import dotenv from 'dotenv';
 
 
 
@@ -21,7 +22,7 @@ const Card = () => {
 
   const fetchCatBreeds = async () => {
 
-    const apiKey = 'live_3E4QzNAesUi4gOPUmdL7Gnd1NoeGSSORmQSh3wJtKPbF8yRf1MY8IEzZxeEinuqZ';
+    const apiKey = process.env.REACT_APP_API_KEY;
     let url = showOneBreed
       ? `https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1&page=${page}&api_key=${apiKey}&breed_ids=${selectedBreedId}`
       : `https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=1&page=${page}&api_key=${apiKey}`;
