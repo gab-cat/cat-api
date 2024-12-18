@@ -4,7 +4,10 @@ module.exports = {
     autoprefixer: {},
     ...(process.env.NODE_ENV === 'production' ? {
       cssnano: {
-        preset: 'default',
+        preset: ['default', {
+          discardComments: { removeAll: true },
+          normalizeWhitespace: false
+        }]
       }
     } : {})
   },
