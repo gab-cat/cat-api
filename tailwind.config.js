@@ -47,8 +47,11 @@ module.exports = {
         poppins: ['Poppins', 'sans-serif'],
       },
       fontSize: {
-        'small-text': '0.875rem',
-        'extra-small-text': '0.7em',
+        'xs': '0.75rem',    // 12px
+        'sm': '0.875rem',   // 14px
+        'base': '1rem',     // 16px
+        'lg': '1.125rem',   // 18px
+        'xl': '1.25rem',    // 20px
       },
       borderRadius: {
         DEFAULT: '0.25rem',
