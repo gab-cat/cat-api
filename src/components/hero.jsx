@@ -119,20 +119,31 @@ export default function Hero() {
         { data.length > 0 && <div className='grid items-center opacity-0 animate-fadeIn'>
           { searchTerm.length > 1 && <h2 className={showDropdown ? 'block mb-5 text-lg font-medium' : 'hidden'}>Search Result : </h2>}
           { searchTerm.length > 1 && <div className={showDropdown ? 'flex flex-wrap justify-center gap-4 mt-[-20px] mb-5 p-2.5 bg-white border border-gray-300 rounded-2xl max-w-[800px]' : 'hidden'}>
-            {data.length > 0 && data
-              .slice(0, 20)
-              .map((item) => (
-                <div
-                  onClick={() => {
-                    setSearchTerm(item.name);
-                    setSelectedBreedId(item.id);
-                  }}
-                  className={data.length > 1 ? "bg-white text-yellow-500 border border-yellow-500 rounded-2xl p-2.5 cursor-pointer transition-colors duration-300 hover:bg-yellow-300 hover:text-white" : "bg-yellow-500 text-white border border-yellow-500 rounded-2xl p-2.5 cursor-pointer transition-colors duration-300"}
-                  key={item.name}
-                >
-                  {item.name}
-                </div>
-              ))}
+            <div role="listbox" aria-label="Search results">
+              {data.length > 0 && data
+                .slice(0, 20)
+                .map((item) => (
+                  <div
+                    role="option"
+                    aria-selected={searchTerm === item.name}
+                    onClick={() => {
+                      setSearchTerm(item.name);
+                      setSelectedBreedId(item.id);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setSearchTerm(item.name);
+                        setSelectedBreedId(item.id);
+                      }
+                    }}
+                    tabIndex={0}
+                    className={data.length > 1 ? "bg-white text-yellow-500 border border-yellow-500 rounded-2xl p-2.5 cursor-pointer transition-colors duration-300 hover:bg-yellow-300 hover:text-white" : "bg-yellow-500 text-white border border-yellow-500 rounded-2xl p-2.5 cursor-pointer transition-colors duration-300"}
+                    key={item.name}
+                  >
+                    {item.name}
+                  </div>
+                ))}
+            </div>
           </div>}
         </div>}
       </div>
