@@ -154,6 +154,6 @@ export default function Hero() {
         tricks to create a purrfectly delightful life alongside your furry companions.
       </p>
     </nav>
-  );
+  )
 
 }
