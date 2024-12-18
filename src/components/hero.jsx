@@ -76,8 +76,15 @@ export default function Hero() {
 
   return (
     <nav className='flex flex-col justify-center items-center bg-white shadow-lg rounded-2xl pb-5'>
-      <div className='transition-transform duration-300 ease-in-out cursor-pointer'>
-        <img src={BannerPhoto} alt="Central Banner" className='max-w-screen-lg mx-auto' onClick={refreshPage} />
+      <div 
+        className='transition-transform duration-300 ease-in-out cursor-pointer'
+        role="button"
+        tabIndex={0}
+        onClick={refreshPage}
+        onKeyDown={(e) => e.key === 'Enter' && refreshPage()}
+      >
+        <img src={BannerPhoto} alt="Central Banner" className='max-w-screen-lg mx-auto' />
+      </div>
       </div>
       <div className='grid items-center opacity-0 animate-fadeIn'>
         <div className="flex items-center border border-gray-300 rounded-2xl overflow-hidden min-w-[500px] w-[500px] mt-14 mb-2 shadow-md transition-all duration-300 h-10 hover:border-yellow-500 focus-within:border-yellow-500 focus-within:w-[600px] focus-within:h-12">
