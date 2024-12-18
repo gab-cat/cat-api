@@ -94,32 +94,31 @@ const Main = () => {
   }, [count]);
 
   return (
-    <div className='filter--card--container'>
-
+    <div className='flex flex-col items-center mt-4'>
         {loading ? (
-        <main className="loading" ref={filterContainerRef}>
-          <div className="filter-bar">
+        <main className="flex justify-center items-center w-full">
+          <div className="flex justify-center items-center w-full">
           <Loading />
           </div>
         </main>
         ) : (
-      <main className="filter--container" ref={filterContainerRef}>
-        <div className="filter-bar">
-            <h2 className="main--filter">Check them out! : </h2>
+      <main className="flex justify-center items-center w-full">
+        <div className="flex justify-center items-center w-full">
+            <h2 className="text-lg font-medium mr-4">Check them out! : </h2>
             {randomBreeds.map((breed, index) => (
               <button
                 key={index}
                 onClick={() => handleBreedClick(index, breed)}
-                className={index === activeIndex ? 'breed-button-active' : 'breed-button'}
+                className={index === activeIndex ? 'bg-yellow-500 text-white border border-yellow-500 rounded-2xl p-2.5 cursor-pointer transition-colors duration-300' : 'bg-white text-yellow-500 border border-yellow-500 rounded-2xl p-2.5 cursor-pointer transition-colors duration-300 hover:bg-yellow-300 hover:text-white'}
               >
                 {breed.breeds && breed.breeds.length > 0 && breed.breeds[0].name}
               </button>
             ))}
             <button
-              className='main--generate'
+              className='text-4xl text-yellow-500 bg-white rounded-full p-2.5 cursor-pointer transition-transform duration-300 hover:scale-110'
               onClick={handleGenerateClick}
             >  
-              <IoMdRefreshCircle className='main--generate'/>
+              <IoMdRefreshCircle className='text-4xl text-yellow-500'/>
             </button>
         </div>
         </main>

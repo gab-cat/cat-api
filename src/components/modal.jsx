@@ -34,13 +34,13 @@ const Modal = () => {
   const renderCatImages = () => {
     
     return (
-    <div className="modal--carrousel">
+    <div className="flex">
       {images.map((image, index) => (
-        <div key={index} className="modal--image-container">
+        <div key={index} className="w-36 h-36 overflow-hidden mr-1 rounded">
           <img 
             src={image.url} 
             alt="Cat Image" 
-            className='modal--image' 
+            className='w-full h-full object-cover rounded transition-transform duration-300 ease-in-out cursor-pointer hover:scale-110 opacity-80 hover:opacity-100' 
             onClick={swapImage} 
             style={{ backgroundImage: `url(${image.url})` }}/>
         </div>
@@ -52,66 +52,66 @@ const Modal = () => {
   
   return (
     
-    <div className={showModal ? "modal-overlay" : "modal-overlay-close" } >
-      <div className='modal--container'>
-      <div className="modal">
-        <div className='modal--images'>
-          <div className='modal--photo-container'><img src={catBreed.url} alt={catBreed.id} className='modal--photo' /></div>
+    <div className={showModal ? "fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 flex justify-center items-center z-50 transition-transform duration-500 ease-in-out" : "fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 flex justify-center items-center z-50 transition-transform duration-500 ease-in-out transform scale-y-0 origin-top"} >
+      <div className='flex flex-col items-start'>
+      <div className="w-full max-w-4xl bg-gray-200 p-5 rounded-lg grid grid-cols-2 gap-4 opacity-0 animate-fadeIn">
+        <div className='flex flex-col items-center'>
+          <div className='w-96 h-96 overflow-hidden mb-1 rounded'><img src={catBreed.url} alt={catBreed.id} className='w-full h-full object-cover rounded transition-transform duration-300 ease-in-out cursor-pointer hover:scale-110' /></div>
           { renderCatImages() }
         </div>
         {catBreed.breeds && catBreed.breeds.length > 0 ? (
-          <div className="modal--content">
-            <h1 className='modal--breed' >{breedName}</h1>
+          <div className="text-justify">
+            <h1 className='text-yellow-500 mb-4' >{breedName}</h1>
             <div>
-              <p className='modal-detail'><strong>Country of Origin : </strong>{catBreed.breeds[0]?.origin}</p>
-              <p className='modal-detail'><strong>Lifespan : </strong>{catBreed.breeds[0]?.life_span} years old</p>
-              { altName && <p className='modal-detail'><strong>Alternate Names : </strong><italic>{altName}</italic></p>}
+              <p className='mb-2'><strong>Country of Origin : </strong>{catBreed.breeds[0]?.origin}</p>
+              <p className='mb-2'><strong>Lifespan : </strong>{catBreed.breeds[0]?.life_span} years old</p>
+              { altName && <p className='mb-2'><strong>Alternate Names : </strong><italic>{altName}</italic></p>}
               <p>{catBreed.breeds[0]?.description}</p>
-              <div className='temperament-container'>
+              <div className='flex flex-wrap mt-4'>
                 {catBreed.breeds[0]?.temperament.split(', ').map((temperament, index) => (
-                  <span key={index} className="temperament-span">
+                  <span key={index} className="bg-white text-yellow-500 border border-yellow-500 py-1 px-4 rounded-full font-light mr-4 mb-2 transition-colors duration-300 cursor-default hover:bg-yellow-500 hover:text-white">
                     {temperament} 
                   </span>
                 ))}
               </div>
               
-              <div className='bar'>
-                <p className='bar-label'>Affection Level</p>
-              <div className='affection--bar-container'>
-                <div className='affection--bar' style={{ '--affectionWidth': `${affectionLevel}%` }}>.</div>
+              <div className='mt-4'>
+                <p className='font-light text-sm'>Affection Level</p>
+              <div className='w-full bg-yellow-200 rounded h-2.5 mt-1'>
+                <div className='bg-yellow-500 h-2.5 rounded' style={{ width: `${affectionLevel}%` }}></div>
               </div>
               </div>
               
-              <div className='bar'>
-                <p className='bar-label'>Child Friendly</p>
-                <div className='affection--bar-container'>
-                  <div className='affection--bar' style={{ '--affectionWidth': `${childFriendly}%` }}>.</div>
+              <div className='mt-4'>
+                <p className='font-light text-sm'>Child Friendly</p>
+                <div className='w-full bg-yellow-200 rounded h-2.5 mt-1'>
+                  <div className='bg-yellow-500 h-2.5 rounded' style={{ width: `${childFriendly}%` }}></div>
                 </div>
               </div>
 
-              <div className='bar'>
-                <p className='bar-label'>Intelligence Level</p>
-                <div className='affection--bar-container'>
-                  <div className='affection--bar' style={{ '--affectionWidth': `${intelligenceLevel}%` }}>.</div>
+              <div className='mt-4'>
+                <p className='font-light text-sm'>Intelligence Level</p>
+                <div className='w-full bg-yellow-200 rounded h-2.5 mt-1'>
+                  <div className='bg-yellow-500 h-2.5 rounded' style={{ width: `${intelligenceLevel}%` }}></div>
                 </div>
               </div>
 
-              <div className='bar'>
-                <p className='bar-label'>Energy Friendly</p>
-                <div className='affection--bar-container'>
-                  <div className='affection--bar' style={{ '--affectionWidth': `${energyLevel}%` }}>.</div>
+              <div className='mt-4'>
+                <p className='font-light text-sm'>Energy Friendly</p>
+                <div className='w-full bg-yellow-200 rounded h-2.5 mt-1'>
+                  <div className='bg-yellow-500 h-2.5 rounded' style={{ width: `${energyLevel}%` }}></div>
                 </div>
               </div>
             
             </div>
-            <div className='learn-more'><FaInfoCircle className='tip--icon'/>Read more about {breedName} <a href={wikipediaURL} target='_blank'>here</a>!</div>
+            <div className='mt-4'><FaInfoCircle className='inline-block mr-1'/>Read more about {breedName} <a href={wikipediaURL} target='_blank' className='text-blue-500 hover:underline'>here</a>!</div>
           </div>
         ) : (
           <p>No breed information available</p>
         )}
       </div>
-      <div className='close--container'>
-        <IoIosCloseCircle className='close--button' onClick={() => closeModal()}/>
+      <div className='self-start relative z-10 ml-[-28px] mt-[-15px] text-red-800 text-4xl opacity-0 animate-fadeIn'>
+        <IoIosCloseCircle className='cursor-pointer transition-colors duration-300 hover:text-red-500' onClick={() => closeModal()}/>
       </div>
       </div>
     </div>
