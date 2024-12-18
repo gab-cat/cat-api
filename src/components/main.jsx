@@ -3,7 +3,7 @@ import { IoMdRefreshCircle } from 'react-icons/io';
 import Loading from './loading';
 import Card from './card';
 import { useRenderContext } from '../context';
-import dotenv from 'dotenv';
+
 
 const Main = () => {
   const { selectedBreedId, setSelectedBreedId, activeIndex, setActiveIndex, setSearchTerm } = useRenderContext();

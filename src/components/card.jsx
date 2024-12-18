@@ -5,7 +5,7 @@ import { useGlobalContext } from '../modalContext';
 import { useRenderContext } from '../context';
 import noFound from './noFound.png';
 import { FaInfoCircle } from "react-icons/fa";
-import dotenv from 'dotenv';
+
 
 const Card = () => {
   const { openModal } = useGlobalContext();

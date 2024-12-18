@@ -85,7 +85,6 @@ export default function Hero() {
       >
         <img src={BannerPhoto} alt="Central Banner" className='max-w-screen-lg mx-auto' />
       </div>
-      </div>
       <div className='grid items-center opacity-0 animate-fadeIn'>
         <div className="flex items-center border border-gray-300 rounded-2xl overflow-hidden min-w-[500px] w-[500px] mt-14 mb-2 shadow-md transition-all duration-300 h-10 hover:border-yellow-500 focus-within:border-yellow-500 focus-within:w-[600px] focus-within:h-12">
           <input type="text" 
