@@ -1,4 +1,3 @@
-import "./App.css";
 import Hero from "./components/hero";
 import Main from "./components/main";
 import Footer from "./components/footer";
@@ -12,7 +11,7 @@ export default function App() {
   console.log("Version 1.16");
   
   return (
-    <main>
+    <main className="bg-gray-100 font-poppins">
       <Hero />
       <Main />
       <Footer />
