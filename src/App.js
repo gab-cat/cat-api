@@ -8,7 +8,7 @@ import { useGlobalContext } from "./modalContext";
 export default function App() {
 
   const { showModal } = useGlobalContext();
-  console.log("Version 1.16");
+  console.log("Version 1.17");
   
   return (
     <main className="bg-gray-100 font-poppins">
